@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'AmharicFont';
+  src: url('./assets/fonts/Shiromeda_Serif_Semi_Bold_6987bef481.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.amharic-text {
+  font-family: 'AmharicFont', sans-serif;
+}
