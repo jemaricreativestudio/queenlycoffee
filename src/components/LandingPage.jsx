@@ -151,9 +151,7 @@ export default function LandingPage() {
         telegram: "Telegram",
         email: "Email",
       },
-      footer: {
-        rights: "All rights reserved.",
-      },
+
     },
     am: {
       hero: {
@@ -247,9 +245,7 @@ export default function LandingPage() {
         telegram: "ቴሌግራም",
         email: "ኢሜይል",
       },
-      footer: {
-        rights: "መብቱ በህግ የተጠበቀ ነው።",
-      },
+
     },
   };
 
@@ -257,9 +253,8 @@ export default function LandingPage() {
 
   return (
     <div
-      className={`min-h-screen overflow-x-hidden antialiased transition-colors duration-300 ${
-        darkMode ? "bg-[#070b14] text-slate-300" : "bg-slate-50 text-slate-700"
-      }`}
+      className={`min-h-screen overflow-x-hidden antialiased transition-colors duration-300 ${darkMode ? "bg-[#070b14] text-slate-300" : "bg-slate-50 text-slate-700"
+        }`}
       style={{
         fontFamily: lang === "am" ? "'AmharicFont', sans-serif" : "'Poppins', sans-serif",
       }}
@@ -294,23 +289,20 @@ export default function LandingPage() {
       {/* GLOBAL BACKGROUND ELEMENTS */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div
-          className={`absolute top-[-10%] left-1/2 -translate-x-1/2 w-[350px] sm:w-[550px] lg:w-[700px] h-[350px] sm:h-[550px] lg:h-[700px] rounded-full blur-[120px] opacity-20 ${
-            darkMode ? "bg-amber-500" : "bg-amber-200"
-          }`}
+          className={`absolute top-[-10%] left-1/2 -translate-x-1/2 w-[350px] sm:w-[550px] lg:w-[700px] h-[350px] sm:h-[550px] lg:h-[700px] rounded-full blur-[120px] opacity-20 ${darkMode ? "bg-amber-500" : "bg-amber-200"
+            }`}
         />
 
         <div
-          className={`absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] ${
-            darkMode ? "opacity-30" : "opacity-10"
-          }`}
+          className={`absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] ${darkMode ? "opacity-30" : "opacity-10"
+            }`}
         />
       </div>
 
       {/* HEADER */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl ${
-          darkMode ? "bg-[#070b14]/80 border-slate-900" : "bg-white/80 border-slate-200"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl ${darkMode ? "bg-[#070b14]/80 border-slate-900" : "bg-white/80 border-slate-200"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 flex justify-between items-center">
           {/* BRAND */}
@@ -331,11 +323,10 @@ export default function LandingPage() {
             {/* LANGUAGE TOGGLE */}
             <button
               onClick={() => setLang(lang === "en" ? "am" : "en")}
-              className={`px-3 py-2 text-xs font-bold rounded-md border transition ${
-                darkMode
+              className={`px-3 py-2 text-xs font-bold rounded-md border transition ${darkMode
                   ? "border-slate-800 bg-slate-900 text-amber-400 hover:border-slate-700"
                   : "border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
-              }`}
+                }`}
             >
               {lang === "en" ? "አማ" : "EN"}
             </button>
@@ -343,9 +334,8 @@ export default function LandingPage() {
             {/* DARK MODE TOGGLE */}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className={`p-2.5 rounded-xl border ${
-                darkMode ? "border-slate-800 bg-slate-900 text-slate-400" : "border-slate-200 bg-white text-slate-700"
-              }`}
+              className={`p-2.5 rounded-xl border ${darkMode ? "border-slate-800 bg-slate-900 text-slate-400" : "border-slate-200 bg-white text-slate-700"
+                }`}
             >
               {darkMode ? <FiSun size={16} /> : <FiMoon size={16} />}
             </button>
@@ -365,11 +355,10 @@ export default function LandingPage() {
             className="w-full h-full object-cover object-center"
           />
           <div
-            className={`absolute inset-0 transition-colors duration-300 ${
-              darkMode
+            className={`absolute inset-0 transition-colors duration-300 ${darkMode
                 ? "bg-gradient-to-b from-[#070b14]/90 via-[#070b14]/85 to-[#070b14]"
                 : "bg-gradient-to-b from-white/95 via-white/85 to-slate-50"
-            }`}
+              }`}
           />
         </div>
 
@@ -391,9 +380,8 @@ export default function LandingPage() {
             <a
               href="#contact"
               onClick={(e) => scrollToSection(e, "contact")}
-              className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-md text-sm font-bold shadow-lg transition-all transform hover:-translate-y-0.5 ${
-                darkMode ? "bg-amber-500 hover:bg-amber-400 text-black" : "bg-slate-900 hover:bg-slate-800 text-white"
-              }`}
+              className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-md text-sm font-bold shadow-lg transition-all transform hover:-translate-y-0.5 ${darkMode ? "bg-amber-500 hover:bg-amber-400 text-black" : "bg-slate-900 hover:bg-slate-800 text-white"
+                }`}
             >
               {t.hero.ctaStart}
               <FiArrowRight />
@@ -419,9 +407,8 @@ export default function LandingPage() {
             ].map((card, index) => (
               <div
                 key={index}
-                className={`rounded-3xl border p-6 sm:p-8 space-y-6 ${
-                  darkMode ? "bg-[#0d1321]/60 border-slate-900" : "bg-white border-slate-200"
-                }`}
+                className={`rounded-3xl border p-6 sm:p-8 space-y-6 ${darkMode ? "bg-[#0d1321]/60 border-slate-900" : "bg-white border-slate-200"
+                  }`}
               >
                 <div className="text-amber-500 text-2xl">{card.icon}</div>
                 <div>
@@ -449,9 +436,8 @@ export default function LandingPage() {
       {/* CURRICULUM SECTION */}
       <section
         id="curriculum"
-        className={`relative z-10 py-20 sm:py-28 px-4 sm:px-6 lg:px-12 border-y transition-colors duration-300 ${
-          darkMode ? "border-slate-900 bg-[#070b14]" : "border-slate-200 bg-[#f8fafc]"
-        }`}
+        className={`relative z-10 py-20 sm:py-28 px-4 sm:px-6 lg:px-12 border-y transition-colors duration-300 ${darkMode ? "border-slate-900 bg-[#070b14]" : "border-slate-200 bg-[#f8fafc]"
+          }`}
       >
         <div className="max-w-6xl mx-auto">
           {/* Main Layout Grid */}
@@ -479,29 +465,26 @@ export default function LandingPage() {
                 return (
                   <div
                     key={index}
-                    className={`rounded-xl border transition-all duration-300 overflow-hidden ${
-                      isFinalItem && !isExpanded
+                    className={`rounded-xl border transition-all duration-300 overflow-hidden ${isFinalItem && !isExpanded
                         ? "border-amber-500/30 bg-amber-500/[0.01]"
                         : darkMode ? "bg-[#0c1220] border-slate-900/80" : "bg-white border-slate-200"
-                    } ${isExpanded ? "ring-1 ring-amber-500/30 shadow-md" : ""}`}
+                      } ${isExpanded ? "ring-1 ring-amber-500/30 shadow-md" : ""}`}
                   >
                     {/* Module Interactive Header Button */}
                     <button
                       onClick={() => toggleAccordion(index)}
                       disabled={!hasLessons}
-                      className={`w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none ${
-                        hasLessons ? "cursor-pointer group" : "cursor-default"
-                      }`}
+                      className={`w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none ${hasLessons ? "cursor-pointer group" : "cursor-default"
+                        }`}
                     >
                       <div className="flex items-center gap-4">
                         <span className={`text-xs font-mono font-bold tracking-wider ${darkMode ? "text-amber-500" : "text-amber-600"}`}>
                           0{index + 1}
                         </span>
-                        <h3 className={`text-sm sm:text-base font-regular tracking-tight transition-colors ${
-                          isExpanded
+                        <h3 className={`text-sm sm:text-base font-regular tracking-tight transition-colors ${isExpanded
                             ? "text-amber-500"
                             : darkMode ? "text-white group-hover:text-amber-400" : "text-slate-950 group-hover:text-amber-600"
-                        }`}>
+                          }`}>
                           {item.title.split("(")[0].trim()}
                         </h3>
                       </div>
@@ -524,9 +507,8 @@ export default function LandingPage() {
                         </div>
 
                         {hasLessons && (
-                          <div className={`transition-colors duration-200 ${
-                            isExpanded ? "text-amber-500" : darkMode ? "text-slate-600 group-hover:text-slate-400" : "text-slate-400 group-hover:text-slate-600"
-                          }`}>
+                          <div className={`transition-colors duration-200 ${isExpanded ? "text-amber-500" : darkMode ? "text-slate-600 group-hover:text-slate-400" : "text-slate-400 group-hover:text-slate-600"
+                            }`}>
                             {isExpanded ? <FiChevronUp size={18} /> : <FiChevronDown size={18} />}
                           </div>
                         )}
@@ -536,9 +518,8 @@ export default function LandingPage() {
                     {/* Expandable Project Lessons Grid Drawer */}
                     {hasLessons && (
                       <div
-                        className={`transition-all duration-300 ease-in-out ${
-                          isExpanded ? "max-h-[500px] opacity-100 border-t" : "max-h-0 opacity-0 pointer-events-none"
-                        } ${darkMode ? "border-slate-900" : "border-slate-100"}`}
+                        className={`transition-all duration-300 ease-in-out ${isExpanded ? "max-h-[500px] opacity-100 border-t" : "max-h-0 opacity-0 pointer-events-none"
+                          } ${darkMode ? "border-slate-900" : "border-slate-100"}`}
                       >
                         <div className={`p-5 sm:p-6 space-y-3.5 ${darkMode ? "bg-slate-950/20" : "bg-slate-50/50"}`}>
                           <span className={`text-[10px] font-bold uppercase tracking-widest block ${darkMode ? "text-slate-500" : "text-slate-400"}`}>
@@ -548,11 +529,10 @@ export default function LandingPage() {
                             {item.lessons.map((lesson, lIdx) => (
                               <div
                                 key={lIdx}
-                                className={`flex items-center gap-3 text-xs p-3 rounded-lg border transition-colors ${
-                                  darkMode
+                                className={`flex items-center gap-3 text-xs p-3 rounded-lg border transition-colors ${darkMode
                                     ? "bg-slate-950/60 border-slate-900/60"
                                     : "bg-white border-slate-200/60"
-                                }`}
+                                  }`}
                               >
                                 <div className="w-4 h-4 rounded bg-amber-500/10 flex items-center justify-center flex-shrink-0">
                                   <FiCheck className="text-amber-500" size={10} />
@@ -577,11 +557,10 @@ export default function LandingPage() {
       {/* EXPERIENCE */}
       <section
         id="experience"
-        className={`relative z-10 py-24 px-4 sm:px-6 lg:px-12 border-y ${
-          darkMode ? "border-slate-900 bg-slate-950/20" : "border-slate-200 bg-white"
-        }`}
+        className={`relative z-10 py-24 px-4 sm:px-6 lg:px-12 border-y ${darkMode ? "border-slate-900 bg-slate-950/20" : "border-slate-200 bg-white"
+          }`}
       >
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className=" max-w-4xl mx-auto text-center space-y-8">
           <span className="text-xs uppercase tracking-[0.3em] text-amber-500">{t.experience.badge}</span>
           <h2 className={`text-3xl sm:text-5xl font-bold tracking-tight ${darkMode ? "text-white" : "text-slate-950"}`}>
             {t.experience.title}
@@ -618,9 +597,8 @@ export default function LandingPage() {
           <div className="grid grid-cols-3 gap-4">
             <a
               href={contactInfo.phone}
-              className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition ${
-                darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
-              }`}
+              className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition ${darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
+                }`}
             >
               <FiPhone className="text-2xl text-amber-500" />
               <span className="text-sm font-medium">{t.contact.call}</span>
@@ -628,9 +606,8 @@ export default function LandingPage() {
 
             <a
               href={contactInfo.telegram}
-              className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition ${
-                darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
-              }`}
+              className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition ${darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
+                }`}
             >
               <FaTelegramPlane className="text-2xl text-amber-500" />
               <span className="text-sm font-medium">{t.contact.telegram}</span>
@@ -638,9 +615,8 @@ export default function LandingPage() {
 
             <a
               href={contactInfo.email}
-              className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition ${
-                darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
-              }`}
+              className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition ${darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
+                }`}
             >
               <FaEnvelope className="text-2xl text-amber-500" />
               <span className="text-sm font-medium">{t.contact.email}</span>
@@ -650,10 +626,24 @@ export default function LandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className={`relative z-10 py-8 border-t text-xs ${darkMode ? "border-slate-950 text-slate-500" : "border-slate-200 text-slate-400"}`}>
-        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center text-center gap-2">
-          <div className="text-sm font-semibold tracking-tight text-amber-500">Fata Kihlot</div>
-          <div>© {year} Fata Kihlot. {t.footer.rights}</div>
+      <footer className={`relative z-10 py-8 px-4 border-t text-xs ${darkMode ? "border-slate-950 text-slate-500" : "border-slate-200 text-slate-400"}`}>
+        <div className="max-w-7xl mx-auto px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+
+          {/* Left: Logo → Hero section */}
+          <button
+            onClick={() => {
+              document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="flex items-center hover:opacity-80 transition"
+          >
+            <img src={logo} alt="Fata Kihlot logo" className="h-8 w-auto" />
+          </button>
+
+          {/* Right: Copyright */}
+          <div className="text-center md:text-right">
+            © {year} Fata Kihlot.
+          </div>
+
         </div>
       </footer>
     </div>
