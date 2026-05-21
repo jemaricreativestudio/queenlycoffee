@@ -13,6 +13,7 @@ import {
   FiChevronUp,
   FiVideo,
 } from "react-icons/fi";
+import { HiArrowUp } from 'react-icons/hi';
 import { FiAward } from "react-icons/fi";
 import logo from "../assets/fata.svg";
 import landingImg from "../assets/landing.jpg"; // Imported landing image
@@ -60,7 +61,7 @@ export default function LandingPage() {
   // Content dictionary for both English and Amharic languages
   const content = {
     en: {
-      header: {
+      bonus: {
         videoBadge: "Free Bonus Video Editing",
       },
 
@@ -185,8 +186,8 @@ export default function LandingPage() {
     },
 
     am: {
-      header: {
-        videoBadge: "ነጻ ተጨማሪ የቪዲዮ ኤዲቲንግ",
+      bonus: {
+        videoBadge: "ነጻ ተጨማሪ ቪዲዮ ኤዲቲንግ",
       },
 
       hero: {
@@ -379,17 +380,6 @@ export default function LandingPage() {
             />
           </a>
 
-          {/* VIDEO EDITING ADD-ON BADGE */}
-          <div
-            className={`hidden md:flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium border transition-colors duration-300 ${
-              darkMode
-                ? "bg-orange-500/10 text-orange-400 border-orange-500/20"
-                : "bg-orange-50 text-orange-700 border-orange-200"
-            }`}
-          >
-            <FiVideo className="animate-pulse flex-shrink-0" size={14} />
-            <span>{t.header?.videoBadge}</span>
-          </div>
 
           {/* ACTIONS */}
           <div className="flex items-center gap-2 shrink-0">
@@ -421,6 +411,7 @@ export default function LandingPage() {
         id="hero"
         className="relative z-10 min-h-screen flex items-center justify-center pt-24 px-4 sm:px-6 lg:px-12 overflow-hidden"
       >
+        {/* Background Media & Overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src={landingImg}
@@ -435,17 +426,9 @@ export default function LandingPage() {
           />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8 py-12 fade-up">
-          {/* Mobile Video Badge view */}
-          <div className="flex justify-center md:hidden">
-            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-medium border ${
-              darkMode ? "bg-purple-500/10 text-purple-400 border-purple-500/20" : "bg-purple-50 text-purple-700 border-purple-200"
-            }`}>
-              <FiVideo size={12} />
-              <span>{t.header?.videoBadge}</span>
-            </div>
-          </div>
-
+        {/* Content Wrapper */}
+        <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center space-y-8 py-12 fade-up">
+          {/* Headings & Description */}
           <div className="space-y-6">
             <h1 className={`text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] ${darkMode ? "text-white" : "text-slate-950"}`}>
               {t.hero.title1}
@@ -459,11 +442,27 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+          {/* Video Editing Add-on Badge (Unified Responsive Layout) */}
+          {t.bonus?.videoBadge && (
+            <div
+              className={`inline-flex items-center gap-2 px-3 py-1 sm:py-1.5 rounded-md text-[11px] sm:text-xs font-medium border transition-colors duration-300 ${darkMode
+                ? "bg-orange-500/10 text-orange-400 border-orange-500/20"
+                : "bg-orange-50 text-orange-700 border-orange-200"
+                }`}
+            >
+              <FiVideo className="animate-pulse flex-shrink-0 w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              <span>{t.bonus.videoBadge}</span>
+            </div>
+          )}
+
+          {/* Call To Action Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto pt-2">
             <a
               href="#contact"
               onClick={(e) => scrollToSection(e, "contact")}
-              className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-md text-sm font-bold shadow-lg transition-all transform hover:-translate-y-0.5 ${darkMode ? "bg-amber-500 hover:bg-amber-400 text-black" : "bg-slate-900 hover:bg-slate-800 text-white"
+              className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-md text-sm font-bold shadow-lg transition-all transform hover:-translate-y-0.5 ${darkMode
+                ? "bg-amber-500 hover:bg-amber-400 text-black"
+                : "bg-slate-900 hover:bg-slate-800 text-white"
                 }`}
             >
               {t.hero.ctaStart}
@@ -732,20 +731,41 @@ export default function LandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className={`relative z-10 py-8 px-4 border-t text-xs ${darkMode ? "border-slate-950 text-slate-500" : "border-slate-200 text-slate-400"}`}>
-        <div className="max-w-7xl mx-auto px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <button
-            onClick={() => {
-              document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="flex items-center hover:opacity-80 transition"
-          >
-            <img src={logo} alt="Fata Kihlot logo" className="h-8 w-auto" />
-          </button>
+      <footer className={`relative z-10 py-10 px-6 border-t text-xs transition-colors duration-300 ${darkMode
+          ? "border-slate-800 bg-slate-950 text-slate-400"
+          : "border-slate-200 bg-slate-50 text-slate-500"
+        }`}>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
 
-          <div className="text-center md:text-right">
-            © {year} Fata Kihlot.
+          {/* Left: Logo Section */}
+          <div className="flex items-center md:w-1/3 w-full justify-center md:justify-start">
+            <img
+              src={logo}
+              alt="Fata Kihlot logo"
+              className="h-7 w-auto opacity-85 hover:opacity-100 transition-opacity duration-200 select-none"
+            />
           </div>
+
+          {/* Center: Back to Top Button */}
+          <div className="flex items-center md:w-1/3 w-full justify-center order-first md:order-none">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className={`group flex items-center gap-2 py-4 px-4 rounded-full border text-[11px] font-semibold tracking-wide uppercase transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
+                  ? "border-slate-800 hover:border-slate-700 hover:text-slate-100 bg-slate-900 focus-visible:ring-slate-500 focus-visible:ring-offset-slate-950"
+                  : "border-slate-200 hover:border-slate-300 hover:text-slate-900 bg-white shadow-sm hover:shadow-md focus-visible:ring-slate-400 focus-visible:ring-offset-white"
+                }`}
+              aria-label="Scroll back to top"
+            >
+              
+              <HiArrowUp className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
+            </button>
+          </div>
+
+          {/* Right: Copyright & Year */}
+          <div className="text-center md:text-right md:w-1/3 w-full tracking-wider text-[11px] opacity-75 font-medium">
+            © {new Date().getFullYear()} Fata Kihlot. All rights reserved.
+          </div>
+
         </div>
       </footer>
     </div>
