@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "../fonts.css"; // Importing your custom font layout
 
 import {
@@ -9,12 +10,10 @@ import {
   FiUsers,
   FiUser,
   FiPhone,
-  FiChevronDown,
-  FiChevronUp,
   FiVideo,
+  FiAward,
 } from "react-icons/fi";
 import { HiArrowUp } from 'react-icons/hi';
-import { FiAward } from "react-icons/fi";
 import logo from "../assets/fata.svg";
 import landingImg from "../assets/landing.jpg"; // Imported landing image
 
@@ -27,9 +26,7 @@ import {
 export default function LandingPage() {
   const [year, setYear] = useState(new Date().getFullYear());
   const [darkMode, setDarkMode] = useState(true);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lang, setLang] = useState("am"); // "en" for English, "am" for Amharic
-  const [expandedIndex, setExpandedIndex] = useState(null); // Accordion state
 
   useEffect(() => {
     setYear(new Date().getFullYear());
@@ -44,8 +41,6 @@ export default function LandingPage() {
 
   const scrollToSection = (e, id) => {
     e.preventDefault();
-    setMobileMenuOpen(false);
-
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({
@@ -54,36 +49,25 @@ export default function LandingPage() {
     }
   };
 
-  const toggleAccordion = (index) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
-
   // Content dictionary for both English and Amharic languages
   const content = {
     en: {
       bonus: {
         videoBadge: "Free Bonus Video Editing",
       },
-
       hero: {
         title1: "Busy Schedule?",
         title2: "Build Real Design Skills In Your Free Time.",
         desc: "Fata kihlot helps busy students, employees, and freelancers access practical graphic design training that perfectly fits into their daily schedules.",
         ctaStart: "Start Your Journey",
       },
-
       programs: {
         badge: "PROGRAMS",
         title: "Training Type",
-
         pMentorship: "Private Training",
-        pMentorshipDesc:
-          "A personalized 1-on-1 learning experience designed around your goals, pace, and preferred schedule.",
-
+        pMentorshipDesc: "A personalized 1-on-1 learning experience designed around your goals, pace, and preferred schedule.",
         cCohorts: "Small Group Training",
-        cCohortsDesc:
-          "A collaborative learning experience where learners study together through shared sessions, agreed schedules, and group accountability.",
-
+        cCohortsDesc: "A collaborative learning experience where learners study together through shared sessions, agreed schedules, and group accountability.",
         privateFeatures: [
           "Fully flexible scheduling",
           "Learn at your own pace",
@@ -91,7 +75,6 @@ export default function LandingPage() {
           "Structured practical assignments",
           "Personal portfolio development",
         ],
-
         groupFeatures: [
           "Shared agreed class schedules",
           "Shared learning space or sessions",
@@ -100,63 +83,41 @@ export default function LandingPage() {
           "Personal portfolio development",
         ],
       },
-
       curriculum: {
         badge: "CURRICULUM",
         title: "What You’ll Learn",
         desc: "A practical step-by-step training program focused on helping you create professional work, build confidence, and prepare for freelance or client-based design projects.",
-
-        // Tool showcase badges translations
         photoshopBadge: "Adobe Photoshop",
         illustratorBadge: "Adobe Illustrator",
         indesignBadge: "Adobe InDesign",
-
         items: [
           {
             title: "Basic Concepts Of Graphic Design",
             icon: "fundamentals",
             desc: "Understand the core principles behind strong visual communication and learn how professional designers think before creating any design.",
             lessonsTitle: "What You’ll Learn:",
-            lessons: [
-              "Concepts of Graphic Design",
-              "Elements of Graphic Design",
-              "Principles of Graphic Design"
-            ],
+            lessons: ["Concepts of Graphic Design", "Elements of Graphic Design", "Principles of Graphic Design"],
           },
           {
             title: "Raster Graphics Design - Adobe Photoshop ",
             icon: "photoshop",
             desc: "Learn professional photo editing and visual composition techniques used for social media, advertising, and digital marketing.",
             lessonsTitle: "Projects Included:",
-            lessons: [
-              "Poster Design",
-              "Banner & Flyer Design",
-              "Social Media Ads Design",
-              "Thumbnail Design"
-            ],
+            lessons: ["Poster Design", "Banner & Flyer Design", "Social Media Ads Design", "Thumbnail Design"],
           },
           {
             title: "Vector Graphic Design - Adobe Illustrator",
             icon: "illustrator",
             desc: "Create scalable vector artwork and build professional brand identity systems for businesses and personal brands.",
             lessonsTitle: "Projects Included:",
-            lessons: [
-              "Logo Design Process",
-              "Branding Identity System",
-              "Business Card Design",
-              "Visual Effects"
-            ],
+            lessons: ["Logo Design Process", "Branding Identity System", "Business Card Design", "Visual Effects"],
           },
           {
             title: "Multi-Page Layout Design - Adobe InDesign",
             icon: "indesign",
             desc: "Learn how to structure professional multi-page documents for print and digital publishing using modern layout systems.",
             lessonsTitle: "Projects Included:",
-            lessons: [
-              "Corporate Brochure Design",
-              "Magazine Layout Design",
-              "Professional ID Card Design"
-            ],
+            lessons: ["Corporate Brochure Design", "Magazine Layout Design", "Professional ID Card Design"],
           },
           {
             title: "Portfolio Development",
@@ -167,13 +128,11 @@ export default function LandingPage() {
           },
         ],
       },
-
       experience: {
         badge: "EXPERIENCE",
         title: "Reliable Skill Training",
         desc: "For over 2.5 years, we have been providing graphic design skills training, focusing on practical projects and clear, step-by-step guidance",
       },
-
       contact: {
         badge: "GET IN TOUCH",
         title: "Begin Your Training",
@@ -184,39 +143,31 @@ export default function LandingPage() {
         email: "Email Us",
       },
     },
-
     am: {
       bonus: {
         videoBadge: "ነጻ ተጨማሪ ቪዲዮ ኤዲቲንግ",
       },
-
       hero: {
         title1: "ጊዜ አጥተዋል?",
         title2: "በትርፍ ጊዜዎ የዲዛይን ክህሎት ይገንቡ!",
         desc: "ፋታ ክህሎት በሥራ የተጠመዱ ተማሪዎችን፣ ሠራተኞችን እና ፍሪላንሰሮችን ከዕለት ተዕለት መርሃ ግብራቸው ጋር በሚስማማ መልኩ ተግባራዊ የግራፊክ ዲዛይን ሥልጠና እንዲያገኙ ያግዛል።",
         ctaStart: "ጉዞዎን ይጀምሩ",
       },
-
       programs: {
         badge: "አይነት",
         title: "የስልጠና አይነት",
-
         pMentorship: "የግል ሥልጠና (1-ለ-1)",
-        pMentorshipDesc:
-          "ከእርስዎ ግቦች፣ ፍጥነት እና ከሚመርጡት የጊዜ ሰሌዳ ጋር ተጣጥሞ የተዘጋጀ ልዩ የ 1-ለ-1 ሥልጠና",
-
+        pMentorshipDesc: "ከእርስዎ ግቦች፣ ፍጥነት እና ከሚመርጡት የጊዜ ሰሌዳ ጋር ተጣጥሞ የተዘጋጀ ልዩ የ 1-ለ-1 ሥልጠና",
         cCohorts: "የቡድን ሥልጠና",
-        cCohortsDesc:
-          "ሰልጣኞች በጋራ ክፍለ-ጊዜዎች፣ በተስማሙበት የጊዜ ሰሌዳ እና በጋራ አብረው የሚሰለጥኑበት መንገድ",
-
+        cCohortsDesc: "ሰልጣኞች በጋራ ክፍለ-ጊዜዎች፣ በተስማሙበት የጊዜ ሰሌዳ እና በጋራ አብረው የሚሰለጥኑበት መንገድ",
         privateFeatures: [
+          "Private Features Details Hidden Dynamic Key",
           "ሙሉ በሙሉ ተለዋዋጭ የጊዜ ሰሌዳ",
           "በራስዎ የመማር ፍጥነት መማር",
           "ቀጥተኛ የ 1-ለ-1 ሥልጠና",
           "የተዋቀሩ ተግባራዊ የሥራ ልምምዶች",
           "የግል ፖርትፎሊዮ ማዳበር",
         ],
-
         groupFeatures: [
           "በስምምነት የተያዙ የጋራ መርሃ ግብሮች",
           "የጋራ የሥልጠና ቦታ ወይም ክፍለ-ጊዜዎች",
@@ -225,63 +176,41 @@ export default function LandingPage() {
           "የግል ፖርትፎሊዮ ማዳበር",
         ],
       },
-
       curriculum: {
         badge: "የሥልጠና ፕሮግራም",
         title: "የሚማሩት ዋና ዋና ነገሮች",
         desc: "ሙያዊ ሥራዎችን ለመስራት፣ በራስ መተማመንን ለመገንባት እና ለፍሪላንስ ወይም ለደንበኛ ፕሮጀክቶች ሙሉ በሙሉ ዝግጁ የሚያደርግ በተግባር ላይ ያተኮረ የደረጃ በደረጃ ሥልጠና።",
-
-        // Tool showcase badges translations (Removed parentheses)
         photoshopBadge: "አዶቤ ፎቶሾፕ",
         illustratorBadge: "አዶቤ ኢሉስትሬተር",
         indesignBadge: "አዶቤ ኢንዲዛይን",
-
         items: [
           {
             title: "የግራፊክ ዲዛይን መሰረታዊ ፅንሰ-ሀሳቦች",
             icon: "fundamentals",
-            desc: "የጠንካራ የእይታ ኮሙኒኬሽን  ዋና መርሆዎችን ይረዱ፤ እንዲሁም ፕሮፌሽናል ዲዛይነሮች ዲዛይን ከመጀመራቸው በፊት እንዴት እንደሚያስቡ ይማሩ።",
+            desc: "የጠንካራ የእይታ ኮሙኒኬሽን ዋና መርሆዎችን ይረዱ፤ እንዲሁም ፕሮፌሽናል ዲዛይነሮች ዲዛይን ከመጀመራቸው በፊት እንዴት እንደሚያስቡ ይማሩ።",
             lessonsTitle: "የሚማሩት ዋና ዋና ነገሮች፦",
-            lessons: [
-              "የግራፊክ ዲዛይን ፅንሰ-ሀሳቦች ",
-              "የግራፊክ ዲዛይን ክፍሎች ",
-              "የግራፊክ ዲዛይን መርሆዎች "
-            ],
+            lessons: ["የግራፊክ ዲዛይን ፅንሰ-ሀሳቦች ", "የግራፊክ ዲዛይን ክፍሎች ", "የግራፊክ ዲዛይን መርሆዎች "],
           },
           {
             title: "የራስተር ግራፊክስ ዲዛይን - አዶቤ ፎቶሾፕ ",
             icon: "photoshop",
             desc: "ለማህበራዊ ሚዲያ፣ ለማስታወቂያ እና ለዲጂታል ማርኬቲንግ የሚያገለግሉ ፕሮፌሽናል የፎቶ ኤዲቲንግ እና የእይታ ጥንቅር ቴክኒኮችን ይማሩ።",
             lessonsTitle: "የሚካተቱ ፕሮጀክቶች፦",
-            lessons: [
-              "የፖስተር ዲዛይን ",
-              "የባነር እና የፍላየር ዲዛይን ",
-              "የማህበራዊ ሚዲያ ማስታወቂያዎች ዲዛይን ",
-              "የታምብኔል ዲዛይን "
-            ],
+            lessons: ["የፖስተር ዲዛይን ", "የባነር እና የፍላየር ዲዛይን ", "የማህበራዊ ሚዲያ ማስታወቂያዎች ዲዛይን ", "የታምብኔል ዲዛይን "],
           },
           {
             title: "የቬክተር ግራፊክስ ዲዛይን - አዶቤ ኢሉስትሬተር",
             icon: "illustrator",
             desc: "ጥራታቸውን የማይቀንሱ የቬክተር ሥራዎችን ይፍጠሩ፤ እንዲሁም ለድርጅቶች እና ለግል ብራንዶች የሚሆኑ ፕሮፌሽናል የብራንድ መለያዎችን ይገንቡ።",
             lessonsTitle: "የሚካተቱ ፕሮጀክቶች፦",
-            lessons: [
-              "የሎጎ ዲዛይን ሂደት ",
-              "የብራንድ መለያ ሥርዓት ",
-              "የቢዝনেস ካርድ ዲዛይን ",
-              "ቪዥዋል ኢፌክትስ "
-            ],
+            lessons: ["የሎጎ ዲዛይን ሂደት ", "የብራንድ መለያ ሥርዓት ", "የቢዝনেস ካርድ ዲዛይን ", "ቪዥዋል ኢፌክትስ "],
           },
           {
             title: "ባለብዙ-ገጽ አቀማመጥ ዲዛይን - አዶቤ ኢንዲዛይን",
             icon: "indesign",
             desc: "ዘመናዊ የሌአውት ሥርዓቶችን በመጠቀም ለህትመት እና ለዲጂታል እትሞች የሚሆኑ ፕሮፌሽናል ባለብዙ-ገጽ ሰነዶችን እንዴት ማዋቀር እንደሚችሉ ይማሩ።",
             lessonsTitle: "የሚካተቱ ፕሮጀክቶች፦",
-            lessons: [
-              "የድርጅት ብሮሹር ዲዛይን ",
-              "የመጽሔት ሌአውት ዲዛይን ",
-              "ፕሮፌሽናል የመታወቂያ ካርድ ዲዛይን "
-            ],
+            lessons: ["የድርጅት ብሮሹር ዲዛይን ", "የመጽሔት ሌአውት ዲዛይን ", "ፕሮፌሽናል የመታወቂያ ካርድ ዲዛይን "],
           },
           {
             title: "የፖርትፎሊዮ ግንባታ",
@@ -292,13 +221,11 @@ export default function LandingPage() {
           },
         ],
       },
-
       experience: {
         badge: "የሥራ ልምድ",
         title: "አስተማማኝ የክህሎት ሥልጠና",
         desc: "ከ2.5 ዓመታት በላይ የዲዛይን ትምህርትን በተግባራዊ ፕሮጀክቶች እና ግልጽ በሆኑ እርምጃዎች ላይ በማድረግ በሥዕላዊ ዲዛይን ክህሎት ሥልጠና ሰጥተናል።",
       },
-
       contact: {
         badge: "ያግኙን",
         title: "ሥልጠናዎን ይጀምሩ",
@@ -315,8 +242,9 @@ export default function LandingPage() {
 
   return (
     <div
-      className={`min-h-screen overflow-x-hidden antialiased transition-colors duration-300 ${darkMode ? "bg-[#070b14] text-slate-300" : "bg-slate-50 text-slate-700"
-        }`}
+      className={`min-h-screen overflow-x-hidden antialiased transition-colors duration-300 ${
+        darkMode ? "bg-[#070b14] text-slate-300" : "bg-slate-50 text-slate-700"
+      }`}
       style={{
         fontFamily: lang === "am" ? "'AmharicFont', sans-serif" : "'Poppins', sans-serif",
       }}
@@ -325,24 +253,8 @@ export default function LandingPage() {
         dangerouslySetInnerHTML={{
           __html: `
           @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
           html {
             scroll-behavior: smooth;
-          }
-
-          @keyframes fadeUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          .fade-up {
-            animation: fadeUp .8s cubic-bezier(.16,1,.3,1) forwards;
           }
         `,
         }}
@@ -351,67 +263,83 @@ export default function LandingPage() {
       {/* GLOBAL BACKGROUND ELEMENTS */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div
-          className={`absolute top-[-10%] left-1/2 -translate-x-1/2 w-[350px] sm:w-[550px] lg:w-[700px] h-[350px] sm:h-[550px] lg:h-[700px] rounded-full blur-[120px] opacity-20 ${darkMode ? "bg-amber-500" : "bg-amber-200"
-            }`}
+          className={`absolute top-[-10%] left-1/2 -translate-x-1/2 w-[350px] sm:w-[550px] lg:w-[700px] h-[350px] sm:h-[550px] lg:h-[700px] rounded-full blur-[120px] opacity-20 ${
+            darkMode ? "bg-amber-500" : "bg-amber-200"
+          }`}
         />
-
         <div
-          className={`absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] ${darkMode ? "opacity-30" : "opacity-10"
-            }`}
+          className={`absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] ${
+            darkMode ? "opacity-30" : "opacity-10"
+          }`}
         />
       </div>
 
       {/* HEADER */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl ${darkMode ? "bg-[#070b14]/80 border-slate-900" : "bg-white/80 border-slate-200"
-          }`}
+     <header
+  className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl ${
+    darkMode
+      ? "bg-[#070b14]/80 border-slate-900"
+      : "bg-white/80 border-slate-200"
+  }`}
+>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3 sm:py-4 flex items-center justify-between">
+    
+    {/* LOGO */}
+    <a
+      href="#hero"
+      onClick={(e) => scrollToSection(e, "hero")}
+      className="flex items-center shrink-0"
+    >
+      <img
+        src={logo}
+        alt="Fata Kihlot Logo"
+        className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto object-contain"
+      />
+    </a>
+
+    {/* ACTION BUTTONS */}
+    <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+      
+      {/* LANGUAGE TOGGLE */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setLang(lang === "en" ? "am" : "en")}
+        className={`px-2.5 sm:px-3 py-2 text-[11px] sm:text-xs font-bold rounded-md border transition-colors ${
+          darkMode
+            ? "border-slate-800 bg-slate-900 text-amber-400 hover:border-slate-700"
+            : "border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
+        }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 flex justify-between items-center gap-4">
-          {/* BRAND */}
-          <a
-            href="#hero"
-            onClick={(e) => scrollToSection(e, "hero")}
-            className="flex items-center shrink-0"
-          >
-            <img
-              src={logo}
-              alt="Fata Kihlot Logo"
-              className="h-12 w-auto block object-contain"
-            />
-          </a>
+        {lang === "en" ? "አማ" : "EN"}
+      </motion.button>
 
-
-          {/* ACTIONS */}
-          <div className="flex items-center gap-2 shrink-0">
-            {/* LANGUAGE TOGGLE */}
-            <button
-              onClick={() => setLang(lang === "en" ? "am" : "en")}
-              className={`px-3 py-2 text-xs font-bold rounded-md border transition ${darkMode
-                ? "border-slate-800 bg-slate-900 text-amber-400 hover:border-slate-700"
-                : "border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
-                }`}
-            >
-              {lang === "en" ? "አማ" : "EN"}
-            </button>
-
-            {/* DARK MODE TOGGLE */}
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`p-2.5 rounded-xl border ${darkMode ? "border-slate-800 bg-slate-900 text-slate-400" : "border-slate-200 bg-white text-slate-700"
-                }`}
-            >
-              {darkMode ? <FiSun size={16} /> : <FiMoon size={16} />}
-            </button>
-          </div>
-        </div>
-      </header>
+      {/* DARK MODE TOGGLE */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setDarkMode(!darkMode)}
+        className={`p-2 sm:p-2.5 rounded-xl border transition-colors ${
+          darkMode
+            ? "border-slate-800 bg-slate-900 text-slate-400"
+            : "border-slate-200 bg-white text-slate-700"
+        }`}
+      >
+        {darkMode ? (
+          <FiSun size={16} className="sm:w-[18px] sm:h-[18px]" />
+        ) : (
+          <FiMoon size={16} className="sm:w-[18px] sm:h-[18px]" />
+        )}
+      </motion.button>
+    </div>
+  </div>
+</header>
 
       {/* HERO SECTION */}
       <section
         id="hero"
         className="relative z-10 min-h-screen flex items-center justify-center pt-24 px-4 sm:px-6 lg:px-12 overflow-hidden"
       >
-        {/* Background Media & Overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src={landingImg}
@@ -419,16 +347,21 @@ export default function LandingPage() {
             className="w-full h-full object-cover object-center"
           />
           <div
-            className={`absolute inset-0 transition-colors duration-300 ${darkMode
-              ? "bg-gradient-to-b from-[#070b14]/90 via-[#070b14]/85 to-[#070b14]"
-              : "bg-gradient-to-b from-white/95 via-white/85 to-slate-50"
-              }`}
+            className={`absolute inset-0 transition-colors duration-300 ${
+              darkMode
+                ? "bg-gradient-to-b from-[#070b14]/90 via-[#070b14]/85 to-[#070b14]"
+                : "bg-gradient-to-b from-white/95 via-white/85 to-slate-50"
+            }`}
           />
         </div>
 
-        {/* Content Wrapper */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center space-y-8 py-12 fade-up">
-          {/* Headings & Description */}
+        {/* Content Wrapper Animated with Framer Motion */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center space-y-8 py-12"
+        >
           <div className="space-y-6">
             <h1 className={`text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] ${darkMode ? "text-white" : "text-slate-950"}`}>
               {t.hero.title1}
@@ -442,34 +375,39 @@ export default function LandingPage() {
             </p>
           </div>
 
-          {/* Video Editing Add-on Badge (Unified Responsive Layout) */}
           {t.bonus?.videoBadge && (
-            <div
-              className={`inline-flex items-center gap-2 px-3 py-1 sm:py-1.5 rounded-md text-[11px] sm:text-xs font-medium border transition-colors duration-300 ${darkMode
-                ? "bg-orange-500/10 text-orange-400 border-orange-500/20"
-                : "bg-orange-50 text-orange-700 border-orange-200"
-                }`}
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className={`inline-flex items-center gap-2 px-3 py-1 sm:py-1.5 rounded-md text-[11px] sm:text-xs font-medium border transition-colors duration-300 ${
+                darkMode
+                  ? "bg-orange-500/10 text-orange-400 border-orange-500/20"
+                  : "bg-orange-50 text-orange-700 border-orange-200"
+              }`}
             >
               <FiVideo className="animate-pulse flex-shrink-0 w-3 h-3 sm:w-3.5 sm:h-3.5" />
               <span>{t.bonus.videoBadge}</span>
-            </div>
+            </motion.div>
           )}
 
-          {/* Call To Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto pt-2">
-            <a
+            <motion.a
+              whileHover={{ y: -3, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               href="#contact"
               onClick={(e) => scrollToSection(e, "contact")}
-              className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-md text-sm font-bold shadow-lg transition-all transform hover:-translate-y-0.5 ${darkMode
-                ? "bg-amber-500 hover:bg-amber-400 text-black"
-                : "bg-slate-900 hover:bg-slate-800 text-white"
-                }`}
+              className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-md text-sm font-bold shadow-lg transition-all ${
+                darkMode
+                  ? "bg-amber-500 text-black hover:bg-amber-400"
+                  : "bg-slate-900 text-white hover:bg-slate-800"
+              }`}
             >
               {t.hero.ctaStart}
               <FiArrowRight />
-            </a>
+            </motion.a>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* PROGRAMS */}
@@ -497,10 +435,16 @@ export default function LandingPage() {
                 features: t.programs.groupFeatures,
               },
             ].map((card, index) => (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 key={index}
-                className={`rounded-3xl border p-6 sm:p-8 space-y-6 ${darkMode ? "bg-[#0d1321]/60 border-slate-900" : "bg-white border-slate-200"
-                  }`}
+                className={`rounded-3xl border p-6 sm:p-8 space-y-6 transition-colors ${
+                  darkMode ? "bg-[#0d1321]/60 border-slate-900" : "bg-white border-slate-200"
+                }`}
               >
                 <div className="text-amber-500 text-2xl">{card.icon}</div>
                 <div>
@@ -512,14 +456,14 @@ export default function LandingPage() {
                   </p>
                 </div>
                 <ul className="space-y-3 text-sm">
-                  {card.features.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
+                  {card.features.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
                       <FiCheck className="text-amber-500 mt-1 flex-shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -528,12 +472,13 @@ export default function LandingPage() {
       {/* CURRICULUM SECTION */}
       <section
         id="curriculum"
-        className={`relative z-10 py-20 sm:py-28 px-4 sm:px-6 lg:px-12 border-y transition-colors duration-300 ${darkMode ? "border-slate-900 bg-[#070b14]" : "border-slate-200 bg-[#f8fafc]"
-          }`}
+        className={`relative z-10 py-20 sm:py-28 px-4 sm:px-6 lg:px-12 border-y transition-colors duration-300 ${
+          darkMode ? "border-slate-900 bg-[#070b14]" : "border-slate-200 bg-[#f8fafc]"
+        }`}
       >
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Left Column: Header & Vertical Showcase Stack */}
+            {/* Left Column */}
             <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
               <div className="space-y-4">
                 <span className="text-xs font-regular uppercase tracking-[0.3em] text-amber-500 block">
@@ -547,17 +492,16 @@ export default function LandingPage() {
                 </p>
               </div>
 
-              {/* Stacked Layout: flex-col, vertical 1-column list */}
               <div className="pt-2 flex flex-col gap-3 max-w-xs">
-                <div className="inline-flex items-center gap-3 px-3 py-2 rounded-lg border text-xs font-regular tracking-wide bg-blue-500/5 text-blue-400 border-blue-500/20 w-full">
+                <div className="inline-flex items-center gap-3 px-3 py-2 rounded-lg border text-xs bg-blue-500/5 text-blue-400 border-blue-500/20 w-full">
                   <span className="flex h-5 w-5 items-center justify-center rounded text-[10px] font-mono font-black bg-blue-500 text-[#070b14] shrink-0">Ps</span>
                   {t.curriculum.photoshopBadge}
                 </div>
-                <div className="inline-flex items-center gap-3 px-3 py-2 rounded-lg border text-xs font-regular tracking-wide bg-orange-500/5 text-orange-400 border-orange-500/20 w-full">
+                <div className="inline-flex items-center gap-3 px-3 py-2 rounded-lg border text-xs bg-orange-500/5 text-orange-400 border-orange-500/20 w-full">
                   <span className="flex h-5 w-5 items-center justify-center rounded text-[10px] font-mono font-black bg-orange-500 text-[#070b14] shrink-0">Ai</span>
                   {t.curriculum.illustratorBadge}
                 </div>
-                <div className="inline-flex items-center gap-3 px-3 py-2 rounded-lg border text-xs font-regular tracking-wide bg-pink-500/5 text-pink-400 border-pink-500/20 w-full">
+                <div className="inline-flex items-center gap-3 px-3 py-2 rounded-lg border text-xs bg-pink-500/5 text-pink-400 border-pink-500/20 w-full">
                   <span className="flex h-5 w-5 items-center justify-center rounded text-[10px] font-mono font-black bg-pink-500 text-[#070b14] shrink-0">Id</span>
                   {t.curriculum.indesignBadge}
                 </div>
@@ -568,16 +512,19 @@ export default function LandingPage() {
             <div className="lg:col-span-8 space-y-4">
               {t.curriculum.items.map((item, index) => {
                 const isFinalItem = index === t.curriculum.items.length - 1;
-
                 return (
-                  <div
+                  <motion.div
+                    initial={{ opacity: 0, x: 15 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
                     key={index}
-                    className={`rounded-xl border transition-all duration-300 overflow-hidden ${isFinalItem
-                      ? "border-amber-500/30 bg-amber-500/[0.01]"
-                      : darkMode ? "bg-[#0c1220] border-slate-900/80" : "bg-white border-slate-200"
-                      }`}
+                    className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                      isFinalItem
+                        ? "border-amber-500/30 bg-amber-500/[0.01]"
+                        : darkMode ? "bg-[#0c1220] border-slate-900/80" : "bg-white border-slate-200"
+                    }`}
                   >
-                    {/* Static Content Card Container */}
                     <div className="w-full p-5 sm:p-6 flex flex-col gap-3">
                       <div className="flex items-center justify-between gap-4">
                         <div className="flex items-center gap-4">
@@ -589,17 +536,16 @@ export default function LandingPage() {
                           </h3>
                         </div>
 
-                        {/* Right Badges */}
                         <div className="flex items-center gap-3">
                           <div className="hidden sm:flex gap-1.5">
                             {item.title.includes("Photoshop") && (
-                              <span className="text-[9px] font-mono font-regular tracking-widest uppercase px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border-blue-500/20">PS</span>
+                              <span className="text-[9px] font-mono tracking-widest uppercase px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border-blue-500/20">PS</span>
                             )}
                             {item.title.includes("Illustrator") && (
-                              <span className="text-[9px] font-mono font-regular tracking-widest uppercase px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 border-orange-500/20">AI</span>
+                              <span className="text-[9px] font-mono tracking-widest uppercase px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 border-orange-500/20">AI</span>
                             )}
                             {item.title.includes("InDesign") && (
-                              <span className="text-[9px] font-mono font-regular tracking-widest uppercase px-2 py-0.5 rounded bg-pink-500/10 text-pink-400 border-pink-500/20">ID</span>
+                              <span className="text-[9px] font-mono tracking-widest uppercase px-2 py-0.5 rounded bg-pink-500/10 text-pink-400 border-pink-500/20">ID</span>
                             )}
                             {isFinalItem && (
                               <span className="text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded bg-amber-500 text-black">Milestone</span>
@@ -608,7 +554,7 @@ export default function LandingPage() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -619,17 +565,15 @@ export default function LandingPage() {
       {/* EXPERIENCE */}
       <section
         id="experience"
-        className={`relative z-10 py-24 px-4 sm:px-6 lg:px-12 border-y transition-colors duration-300 ${darkMode ? "border-slate-900 bg-slate-950/20" : "border-slate-200 bg-white"
-          }`}
+        className={`relative z-10 py-24 px-4 sm:px-6 lg:px-12 border-y transition-colors duration-300 ${
+          darkMode ? "border-slate-900 bg-slate-950/20" : "border-slate-200 bg-white"
+        }`}
       >
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
-          {/* Left Column: Icon, Badge & Title */}
           <div className="lg:col-span-5 space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start">
-            <div className={`p-3 rounded-xl border w-fit ${darkMode
-              ? "bg-slate-900/50 border-slate-800 text-amber-400"
-              : "bg-amber-50 border-amber-100 text-amber-600"
-              }`}>
+            <div className={`p-3 rounded-xl border w-fit ${
+              darkMode ? "bg-slate-900/50 border-slate-800 text-amber-400" : "bg-amber-50 border-amber-100 text-amber-600"
+            }`}>
               <FiAward size={28} />
             </div>
 
@@ -637,42 +581,32 @@ export default function LandingPage() {
               <span className="block text-xs uppercase tracking-[0.3em] text-amber-500 font-semibold">
                 {t.experience.badge}
               </span>
-              <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight ${darkMode ? "text-white" : "text-slate-950"
-                }`}>
+              <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight ${darkMode ? "text-white" : "text-slate-950"}`}>
                 {t.experience.title}
               </h2>
             </div>
           </div>
 
-          {/* Right Column: Highlight Card + Description */}
           <div className="lg:col-span-7">
-            <div className={`p-8 sm:p-10 rounded-2xl border flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center ${darkMode
-              ? "bg-slate-900/30 border-slate-900"
-              : "bg-slate-50/70 border-slate-100"
-              }`}>
-              {/* Big Visual Metric Counter */}
+            <div className={`p-8 sm:p-10 rounded-2xl border flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center ${
+              darkMode ? "bg-slate-900/30 border-slate-900" : "bg-slate-50/70 border-slate-100"
+            }`}>
               <div className="flex-shrink-0">
                 <div className="text-4xl sm:text-5xl font-bold tracking-tight text-amber-500">
                   2.5+
                 </div>
-                <div className={`text-xs uppercase tracking-wider font-medium mt-1 ${darkMode ? "text-slate-500" : "text-slate-400"
-                  }`}>
+                <div className={`text-xs uppercase tracking-wider font-medium mt-1 ${darkMode ? "text-slate-500" : "text-slate-400"}`}>
                   Years Exp.
                 </div>
               </div>
 
-              {/* Vertical Separator for Desktop */}
-              <div className={`hidden sm:block h-12 w-px ${darkMode ? "bg-slate-800" : "bg-slate-200"
-                }`} />
+              <div className={`hidden sm:block h-12 w-px ${darkMode ? "bg-slate-800" : "bg-slate-200"}`} />
 
-              {/* Main Text */}
-              <p className={`font-regular sm:text-lg  ${darkMode ? "text-slate-300" : "text-slate-600"
-                }`}>
+              <p className={`font-regular sm:text-lg ${darkMode ? "text-slate-300" : "text-slate-600"}`}>
                 {t.experience.desc}
               </p>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -689,52 +623,45 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <a
+          <motion.a
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             href={contactInfo.whatsapp}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-md bg-amber-500 text-black font-semibold hover:bg-amber-400 transition"
+            className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-md bg-amber-500 text-black font-semibold hover:bg-amber-400 shadow-md transition-colors"
           >
             <FaWhatsapp className="text-xl" />
             {t.contact.ctaWhatsapp}
-          </a>
+          </motion.a>
 
           <div className="grid grid-cols-3 gap-4">
-            <a
-              href={contactInfo.phone}
-              className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition ${darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
+            {[
+              { href: contactInfo.phone, icon: <FiPhone className="text-2xl text-amber-500" />, label: t.contact.call },
+              { href: contactInfo.telegram, icon: <FaTelegramPlane className="text-2xl text-amber-500" />, label: t.contact.telegram },
+              { href: contactInfo.email, icon: <FaEnvelope className="text-2xl text-amber-500" />, label: t.contact.email }
+            ].map((link, idx) => (
+              <motion.a
+                key={idx}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.97 }}
+                href={link.href}
+                className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition-colors ${
+                  darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
                 }`}
-            >
-              <FiPhone className="text-2xl text-amber-500" />
-              <span className="text-sm font-medium">{t.contact.call}</span>
-            </a>
-
-            <a
-              href={contactInfo.telegram}
-              className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition ${darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
-                }`}
-            >
-              <FaTelegramPlane className="text-2xl text-amber-500" />
-              <span className="text-sm font-medium">{t.contact.telegram}</span>
-            </a>
-
-            <a
-              href={contactInfo.email}
-              className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition ${darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
-                }`}
-            >
-              <FaEnvelope className="text-2xl text-amber-500" />
-              <span className="text-sm font-medium">{t.contact.email}</span>
-            </a>
+              >
+                {link.icon}
+                <span className="text-sm font-medium">{link.label}</span>
+              </motion.a>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className={`relative z-10 py-10 px-6 border-t text-xs transition-colors duration-300 ${darkMode
-          ? "border-slate-800 bg-slate-950 text-slate-400"
-          : "border-slate-200 bg-slate-50 text-slate-500"
-        }`}>
+      <footer className={`relative z-10 py-10 px-6 border-t text-xs transition-colors duration-300 ${
+        darkMode ? "border-slate-800 bg-slate-950 text-slate-400" : "border-slate-200 bg-slate-50 text-slate-500"
+      }`}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
 
           {/* Left: Logo Section */}
@@ -748,22 +675,25 @@ export default function LandingPage() {
 
           {/* Center: Back to Top Button */}
           <div className="flex items-center md:w-1/3 w-full justify-center order-first md:order-none">
-            <button
+            <motion.button
+              whileHover={{ y: -3 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className={`group flex items-center gap-2 py-4 px-4 rounded-full border text-[11px] font-semibold tracking-wide uppercase transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
+              className={`group flex items-center gap-2 py-4 px-4 rounded-full border text-[11px] font-semibold tracking-wide uppercase transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                darkMode
                   ? "border-slate-800 hover:border-slate-700 hover:text-slate-100 bg-slate-900 focus-visible:ring-slate-500 focus-visible:ring-offset-slate-950"
                   : "border-slate-200 hover:border-slate-300 hover:text-slate-900 bg-white shadow-sm hover:shadow-md focus-visible:ring-slate-400 focus-visible:ring-offset-white"
-                }`}
+              }`}
               aria-label="Scroll back to top"
             >
-              
+             
               <HiArrowUp className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
-            </button>
+            </motion.button>
           </div>
 
           {/* Right: Copyright & Year */}
           <div className="text-center md:text-right md:w-1/3 w-full tracking-wider text-[11px] opacity-75 font-medium">
-            © {new Date().getFullYear()} Fata Kihlot. All rights reserved.
+            © {year} Fata Kihlot. All rights reserved.
           </div>
 
         </div>
