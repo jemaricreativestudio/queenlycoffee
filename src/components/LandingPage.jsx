@@ -11,6 +11,7 @@ import {
   FiPhone,
   FiChevronDown,
   FiChevronUp,
+  FiVideo,
 } from "react-icons/fi";
 import { FiAward } from "react-icons/fi";
 import logo from "../assets/fata.svg";
@@ -59,6 +60,10 @@ export default function LandingPage() {
   // Content dictionary for both English and Amharic languages
   const content = {
     en: {
+      header: {
+        videoBadge: "Free Bonus Video Editing",
+      },
+
       hero: {
         title1: "Busy Schedule?",
         title2: "Build Real Design Skills In Your Free Time.",
@@ -168,18 +173,22 @@ export default function LandingPage() {
         desc: "For over 2.5 years, we have been providing graphic design skills training, focusing on practical projects and clear, step-by-step guidance",
       },
 
-   contact: {
-  badge: "GET IN TOUCH",
-  title: "Begin Your Training",
-  desc: "Whether you prefer personal 1-on-1 mentorship or collaborative group sessions, message us on WhatsApp to ask questions or discuss your schedule.",
-  ctaWhatsapp: "Chat on WhatsApp",
-  call: "Call Us",
-  telegram: "Telegram",
-  email: "Email Us",
-},
+      contact: {
+        badge: "GET IN TOUCH",
+        title: "Begin Your Training",
+        desc: "Whether you prefer personal 1-on-1 mentorship or collaborative group sessions, message us on WhatsApp to ask questions or discuss your schedule.",
+        ctaWhatsapp: "Chat on WhatsApp",
+        call: "Call Us",
+        telegram: "Telegram",
+        email: "Email Us",
+      },
     },
 
     am: {
+      header: {
+        videoBadge: "ነጻ ተጨማሪ የቪዲዮ ኤዲቲንግ",
+      },
+
       hero: {
         title1: "ጊዜ አጥተዋል?",
         title2: "በትርፍ ጊዜዎ የዲዛይን ክህሎት ይገንቡ!",
@@ -258,7 +267,7 @@ export default function LandingPage() {
             lessons: [
               "የሎጎ ዲዛይን ሂደት ",
               "የብራንድ መለያ ሥርዓት ",
-              "የቢዝነስ ካርድ ዲዛይን ",
+              "የቢዝনেস ካርድ ዲዛይን ",
               "ቪዥዋል ኢፌክትስ "
             ],
           },
@@ -356,12 +365,12 @@ export default function LandingPage() {
         className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl ${darkMode ? "bg-[#070b14]/80 border-slate-900" : "bg-white/80 border-slate-200"
           }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 flex justify-between items-center gap-4">
           {/* BRAND */}
           <a
             href="#hero"
             onClick={(e) => scrollToSection(e, "hero")}
-            className="flex items-center"
+            className="flex items-center shrink-0"
           >
             <img
               src={logo}
@@ -370,8 +379,20 @@ export default function LandingPage() {
             />
           </a>
 
+          {/* VIDEO EDITING ADD-ON BADGE */}
+          <div
+            className={`hidden md:flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium border transition-colors duration-300 ${
+              darkMode
+                ? "bg-orange-500/10 text-orange-400 border-orange-500/20"
+                : "bg-orange-50 text-orange-700 border-orange-200"
+            }`}
+          >
+            <FiVideo className="animate-pulse flex-shrink-0" size={14} />
+            <span>{t.header?.videoBadge}</span>
+          </div>
+
           {/* ACTIONS */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             {/* LANGUAGE TOGGLE */}
             <button
               onClick={() => setLang(lang === "en" ? "am" : "en")}
@@ -415,6 +436,16 @@ export default function LandingPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8 py-12 fade-up">
+          {/* Mobile Video Badge view */}
+          <div className="flex justify-center md:hidden">
+            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-medium border ${
+              darkMode ? "bg-purple-500/10 text-purple-400 border-purple-500/20" : "bg-purple-50 text-purple-700 border-purple-200"
+            }`}>
+              <FiVideo size={12} />
+              <span>{t.header?.videoBadge}</span>
+            </div>
+          </div>
+
           <div className="space-y-6">
             <h1 className={`text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] ${darkMode ? "text-white" : "text-slate-950"}`}>
               {t.hero.title1}
