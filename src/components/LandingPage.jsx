@@ -242,9 +242,8 @@ export default function LandingPage() {
 
   return (
     <div
-      className={`min-h-screen overflow-x-hidden antialiased transition-colors duration-300 ${
-        darkMode ? "bg-[#070b14] text-slate-300" : "bg-slate-50 text-slate-700"
-      }`}
+      className={`min-h-screen overflow-x-hidden antialiased transition-colors duration-300 ${darkMode ? "bg-[#070b14] text-slate-300" : "bg-slate-50 text-slate-700"
+        }`}
       style={{
         fontFamily: lang === "am" ? "'AmharicFont', sans-serif" : "'Poppins', sans-serif",
       }}
@@ -263,77 +262,72 @@ export default function LandingPage() {
       {/* GLOBAL BACKGROUND ELEMENTS */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div
-          className={`absolute top-[-10%] left-1/2 -translate-x-1/2 w-[350px] sm:w-[550px] lg:w-[700px] h-[350px] sm:h-[550px] lg:h-[700px] rounded-full blur-[120px] opacity-20 ${
-            darkMode ? "bg-amber-500" : "bg-amber-200"
-          }`}
+          className={`absolute top-[-10%] left-1/2 -translate-x-1/2 w-[350px] sm:w-[550px] lg:w-[700px] h-[350px] sm:h-[550px] lg:h-[700px] rounded-full blur-[120px] opacity-20 ${darkMode ? "bg-amber-500" : "bg-amber-200"
+            }`}
         />
         <div
-          className={`absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] ${
-            darkMode ? "opacity-30" : "opacity-10"
-          }`}
+          className={`absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] ${darkMode ? "opacity-30" : "opacity-10"
+            }`}
         />
       </div>
 
       {/* HEADER */}
-     <header
-  className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl ${
-    darkMode
-      ? "bg-[#070b14]/80 border-slate-900"
-      : "bg-white/80 border-slate-200"
-  }`}
->
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3 sm:py-4 flex items-center justify-between">
-    
-    {/* LOGO */}
-    <a
-      href="#hero"
-      onClick={(e) => scrollToSection(e, "hero")}
-      className="flex items-center shrink-0"
-    >
-      <img
-        src={logo}
-        alt="Fata Kihlot Logo"
-        className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto object-contain"
-      />
-    </a>
-
-    {/* ACTION BUTTONS */}
-    <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-      
-      {/* LANGUAGE TOGGLE */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setLang(lang === "en" ? "am" : "en")}
-        className={`px-2.5 sm:px-3 py-2 text-[11px] sm:text-xs font-bold rounded-md border transition-colors ${
-          darkMode
-            ? "border-slate-800 bg-slate-900 text-amber-400 hover:border-slate-700"
-            : "border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
-        }`}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl ${darkMode
+            ? "bg-[#070b14]/80 border-slate-900"
+            : "bg-white/80 border-slate-200"
+          }`}
       >
-        {lang === "en" ? "አማ" : "EN"}
-      </motion.button>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3 sm:py-4 flex items-center justify-between">
 
-      {/* DARK MODE TOGGLE */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setDarkMode(!darkMode)}
-        className={`p-2 sm:p-2.5 rounded-xl border transition-colors ${
-          darkMode
-            ? "border-slate-800 bg-slate-900 text-slate-400"
-            : "border-slate-200 bg-white text-slate-700"
-        }`}
-      >
-        {darkMode ? (
-          <FiSun size={16} className="sm:w-[18px] sm:h-[18px]" />
-        ) : (
-          <FiMoon size={16} className="sm:w-[18px] sm:h-[18px]" />
-        )}
-      </motion.button>
-    </div>
-  </div>
-</header>
+          {/* LOGO */}
+          <a
+            href="#hero"
+            onClick={(e) => scrollToSection(e, "hero")}
+            className="flex items-center shrink-0"
+          >
+            <img
+              src={logo}
+              alt="Fata Kihlot Logo"
+              className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto object-contain"
+            />
+          </a>
+
+          {/* ACTION BUTTONS */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+
+            {/* LANGUAGE TOGGLE */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setLang(lang === "en" ? "am" : "en")}
+              className={`px-2.5 sm:px-3 py-2 text-[11px] sm:text-xs font-bold rounded-md border transition-colors ${darkMode
+                  ? "border-slate-800 bg-slate-900 text-amber-400 hover:border-slate-700"
+                  : "border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
+                }`}
+            >
+              {lang === "en" ? "አማ" : "EN"}
+            </motion.button>
+
+            {/* DARK MODE TOGGLE */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setDarkMode(!darkMode)}
+              className={`p-2 sm:p-2.5 rounded-xl border transition-colors ${darkMode
+                  ? "border-slate-800 bg-slate-900 text-slate-400"
+                  : "border-slate-200 bg-white text-slate-700"
+                }`}
+            >
+              {darkMode ? (
+                <FiSun size={16} className="sm:w-[18px] sm:h-[18px]" />
+              ) : (
+                <FiMoon size={16} className="sm:w-[18px] sm:h-[18px]" />
+              )}
+            </motion.button>
+          </div>
+        </div>
+      </header>
 
       {/* HERO SECTION */}
       <section
@@ -347,16 +341,15 @@ export default function LandingPage() {
             className="w-full h-full object-cover object-center"
           />
           <div
-            className={`absolute inset-0 transition-colors duration-300 ${
-              darkMode
+            className={`absolute inset-0 transition-colors duration-300 ${darkMode
                 ? "bg-gradient-to-b from-[#070b14]/90 via-[#070b14]/85 to-[#070b14]"
                 : "bg-gradient-to-b from-white/95 via-white/85 to-slate-50"
-            }`}
+              }`}
           />
         </div>
 
         {/* Content Wrapper Animated with Framer Motion */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -380,11 +373,10 @@ export default function LandingPage() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className={`inline-flex items-center gap-2 px-3 py-1 sm:py-1.5 rounded-md text-[11px] sm:text-xs font-medium border transition-colors duration-300 ${
-                darkMode
+              className={`inline-flex items-center gap-2 px-3 py-1 sm:py-1.5 rounded-md text-[11px] sm:text-xs font-medium border transition-colors duration-300 ${darkMode
                   ? "bg-orange-500/10 text-orange-400 border-orange-500/20"
                   : "bg-orange-50 text-orange-700 border-orange-200"
-              }`}
+                }`}
             >
               <FiVideo className="animate-pulse flex-shrink-0 w-3 h-3 sm:w-3.5 sm:h-3.5" />
               <span>{t.bonus.videoBadge}</span>
@@ -397,11 +389,10 @@ export default function LandingPage() {
               whileTap={{ scale: 0.98 }}
               href="#contact"
               onClick={(e) => scrollToSection(e, "contact")}
-              className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-md text-sm font-bold shadow-lg transition-all ${
-                darkMode
+              className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-md text-sm font-bold shadow-lg transition-all ${darkMode
                   ? "bg-amber-500 text-black hover:bg-amber-400"
                   : "bg-slate-900 text-white hover:bg-slate-800"
-              }`}
+                }`}
             >
               {t.hero.ctaStart}
               <FiArrowRight />
@@ -442,9 +433,8 @@ export default function LandingPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 key={index}
-                className={`rounded-3xl border p-6 sm:p-8 space-y-6 transition-colors ${
-                  darkMode ? "bg-[#0d1321]/60 border-slate-900" : "bg-white border-slate-200"
-                }`}
+                className={`rounded-3xl border p-6 sm:p-8 space-y-6 transition-colors ${darkMode ? "bg-[#0d1321]/60 border-slate-900" : "bg-white border-slate-200"
+                  }`}
               >
                 <div className="text-amber-500 text-2xl">{card.icon}</div>
                 <div>
@@ -472,9 +462,8 @@ export default function LandingPage() {
       {/* CURRICULUM SECTION */}
       <section
         id="curriculum"
-        className={`relative z-10 py-20 sm:py-28 px-4 sm:px-6 lg:px-12 border-y transition-colors duration-300 ${
-          darkMode ? "border-slate-900 bg-[#070b14]" : "border-slate-200 bg-[#f8fafc]"
-        }`}
+        className={`relative z-10 py-20 sm:py-28 px-4 sm:px-6 lg:px-12 border-y transition-colors duration-300 ${darkMode ? "border-slate-900 bg-[#070b14]" : "border-slate-200 bg-[#f8fafc]"
+          }`}
       >
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -519,11 +508,10 @@ export default function LandingPage() {
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                     key={index}
-                    className={`rounded-xl border transition-all duration-300 overflow-hidden ${
-                      isFinalItem
+                    className={`rounded-xl border transition-all duration-300 overflow-hidden ${isFinalItem
                         ? "border-amber-500/30 bg-amber-500/[0.01]"
                         : darkMode ? "bg-[#0c1220] border-slate-900/80" : "bg-white border-slate-200"
-                    }`}
+                      }`}
                   >
                     <div className="w-full p-5 sm:p-6 flex flex-col gap-3">
                       <div className="flex items-center justify-between gap-4">
@@ -565,15 +553,13 @@ export default function LandingPage() {
       {/* EXPERIENCE */}
       <section
         id="experience"
-        className={`relative z-10 py-24 px-4 sm:px-6 lg:px-12 border-y transition-colors duration-300 ${
-          darkMode ? "border-slate-900 bg-slate-950/20" : "border-slate-200 bg-white"
-        }`}
+        className={`relative z-10 py-24 px-4 sm:px-6 lg:px-12 border-y transition-colors duration-300 ${darkMode ? "border-slate-900 bg-slate-950/20" : "border-slate-200 bg-white"
+          }`}
       >
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start">
-            <div className={`p-3 rounded-xl border w-fit ${
-              darkMode ? "bg-slate-900/50 border-slate-800 text-amber-400" : "bg-amber-50 border-amber-100 text-amber-600"
-            }`}>
+            <div className={`p-3 rounded-xl border w-fit ${darkMode ? "bg-slate-900/50 border-slate-800 text-amber-400" : "bg-amber-50 border-amber-100 text-amber-600"
+              }`}>
               <FiAward size={28} />
             </div>
 
@@ -588,9 +574,8 @@ export default function LandingPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className={`p-8 sm:p-10 rounded-2xl border flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center ${
-              darkMode ? "bg-slate-900/30 border-slate-900" : "bg-slate-50/70 border-slate-100"
-            }`}>
+            <div className={`p-8 sm:p-10 rounded-2xl border flex flex-col sm:flex-row gap-6 sm:gap-8 items-start sm:items-center ${darkMode ? "bg-slate-900/30 border-slate-900" : "bg-slate-50/70 border-slate-100"
+              }`}>
               <div className="flex-shrink-0">
                 <div className="text-4xl sm:text-5xl font-bold tracking-tight text-amber-500">
                   2.5+
@@ -646,9 +631,8 @@ export default function LandingPage() {
                 whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.97 }}
                 href={link.href}
-                className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition-colors ${
-                  darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
-                }`}
+                className={`p-5 rounded-xl border flex flex-col items-center gap-2 transition-colors ${darkMode ? "bg-[#0d1321]/60 border-slate-900 hover:border-amber-500" : "bg-white border-slate-200 hover:border-amber-500"
+                  }`}
               >
                 {link.icon}
                 <span className="text-sm font-medium">{link.label}</span>
@@ -659,9 +643,8 @@ export default function LandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className={`relative z-10 py-10 px-6 border-t text-xs transition-colors duration-300 ${
-        darkMode ? "border-slate-800 bg-slate-950 text-slate-400" : "border-slate-200 bg-slate-50 text-slate-500"
-      }`}>
+      <footer className={`relative z-10 py-10 px-6 border-t text-xs transition-colors duration-300 ${darkMode ? "border-slate-800 bg-slate-950 text-slate-400" : "border-slate-200 bg-slate-50 text-slate-500"
+        }`}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
 
           {/* Left: Logo Section */}
@@ -679,14 +662,13 @@ export default function LandingPage() {
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className={`group flex items-center gap-2 py-4 px-4 rounded-full border text-[11px] font-semibold tracking-wide uppercase transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
-                darkMode
+              className={`group flex items-center gap-2 py-4 px-4 rounded-full border text-[11px] font-semibold tracking-wide uppercase transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
                   ? "border-slate-800 hover:border-slate-700 hover:text-slate-100 bg-slate-900 focus-visible:ring-slate-500 focus-visible:ring-offset-slate-950"
                   : "border-slate-200 hover:border-slate-300 hover:text-slate-900 bg-white shadow-sm hover:shadow-md focus-visible:ring-slate-400 focus-visible:ring-offset-white"
-              }`}
+                }`}
               aria-label="Scroll back to top"
             >
-             
+
               <HiArrowUp className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
             </motion.button>
           </div>
