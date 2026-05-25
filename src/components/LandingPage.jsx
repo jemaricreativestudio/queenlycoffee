@@ -161,7 +161,6 @@ export default function LandingPage() {
         cCohorts: "የቡድን ሥልጠና",
         cCohortsDesc: "ሰልጣኞች በጋራ ክፍለ-ጊዜዎች፣ በተስማሙበት የጊዜ ሰሌዳ እና በጋራ አብረው የሚሰለጥኑበት መንገድ",
         privateFeatures: [
-          "Private Features Details Hidden Dynamic Key",
           "ሙሉ በሙሉ ተለዋዋጭ የጊዜ ሰሌዳ",
           "በራስዎ የመማር ፍጥነት መማር",
           "ቀጥተኛ የ 1-ለ-1 ሥልጠና",
