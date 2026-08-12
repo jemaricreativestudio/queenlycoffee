@@ -58,7 +58,7 @@ export default function LandingPage() {
       hero: {
         title1: "Busy Schedule?",
         title2: "Build Real Design Skills In Your Free Time.",
-        desc: "Fata kihlot helps busy students, employees, and freelancers access practical graphic design training that perfectly fits into their daily schedules.",
+        desc: "Jemari Creative helps busy students, employees, and freelancers access practical graphic design training that perfectly fits into their daily schedules.",
         ctaStart: "Start Your Journey",
       },
       programs: {
@@ -131,7 +131,7 @@ export default function LandingPage() {
       experience: {
         badge: "EXPERIENCE",
         title: "Reliable Skill Training",
-        desc: "For over 2.5 years, we have been providing graphic design skills training, focusing on practical projects and clear, step-by-step guidance",
+        desc: "For over 3 years, we have been providing graphic design skills training, focusing on practical projects and clear, step-by-step guidance",
       },
       contact: {
         badge: "GET IN TOUCH",
@@ -150,7 +150,7 @@ export default function LandingPage() {
       hero: {
         title1: "ጊዜ አጥተዋል?",
         title2: "በትርፍ ጊዜዎ የዲዛይን ክህሎት ይገንቡ!",
-        desc: "ፋታ ክህሎት በሥራ የተጠመዱ ተማሪዎችን፣ ሠራተኞችን እና ፍሪላንሰሮችን ከዕለት ተዕለት መርሃ ግብራቸው ጋር በሚስማማ መልኩ ተግባራዊ የግራፊክ ዲዛይን ሥልጠና እንዲያገኙ ያግዛል።",
+        desc: "ጀማሪ ክርኤቲቭ በሥራ የተጠመዱ ተማሪዎችን፣ ሠራተኞችን እና ፍሪላንሰሮችን ከዕለት ተዕለት መርሃ ግብራቸው ጋር በሚስማማ መልኩ ተግባራዊ የግራፊክ ዲዛይን ሥልጠና እንዲያገኙ ያግዛል።",
         ctaStart: "ጉዞዎን ይጀምሩ",
       },
       programs: {
@@ -223,7 +223,7 @@ export default function LandingPage() {
       experience: {
         badge: "የሥራ ልምድ",
         title: "አስተማማኝ የክህሎት ሥልጠና",
-        desc: "ከ2.5 ዓመታት በላይ የዲዛይን ትምህርትን በተግባራዊ ፕሮጀክቶች እና ግልጽ በሆኑ እርምጃዎች ላይ በማድረግ በሥዕላዊ ዲዛይን ክህሎት ሥልጠና ሰጥተናል።",
+        desc: "ከ3 ዓመታት በላይ የዲዛይን ትምህርትን በተግባራዊ ፕሮጀክቶች እና ግልጽ በሆኑ እርምጃዎች ላይ በማድረግ በሥዕላዊ ዲዛይን ክህሎት ሥልጠና ሰጥተናል።",
       },
       contact: {
         badge: "ያግኙን",
@@ -577,7 +577,7 @@ export default function LandingPage() {
               }`}>
               <div className="flex-shrink-0">
                 <div className="text-4xl sm:text-5xl font-bold tracking-tight text-amber-500">
-                  2.5+
+                  3+
                 </div>
                 <div className={`text-xs uppercase tracking-wider font-medium mt-1 ${darkMode ? "text-slate-500" : "text-slate-400"}`}>
                   Years Exp.
@@ -674,7 +674,7 @@ export default function LandingPage() {
 
           {/* Right: Copyright & Year */}
           <div className="text-center md:text-right md:w-1/3 w-full tracking-wider text-[11px] opacity-75 font-medium">
-            © {year} Fata Kihlot. All rights reserved.
+            © {year} jemari Creative.
           </div>
 
         </div>
