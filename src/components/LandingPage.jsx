@@ -674,7 +674,7 @@ export default function LandingPage() {
 
           {/* Right: Copyright & Year */}
           <div className="text-center md:text-right md:w-1/3 w-full tracking-wider text-[11px] opacity-75 font-medium">
-            © {year} jemari Creative.
+            © {year} Jemari Creative.
           </div>
 
         </div>
