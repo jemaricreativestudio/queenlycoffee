@@ -33,7 +33,7 @@ export default function LandingPage() {
   }, []);
 
   const contactInfo = {
-    telegram: "https://t.me/wubese24",
+    telegram: "https://t.me/jemari_creative",
     email: "mailto:jemaricreativestudio@gmail.com",
     whatsapp: "https://wa.me/251923394813",
     phone: "tel:+251923394813",
@@ -650,7 +650,7 @@ export default function LandingPage() {
           <div className="flex items-center md:w-1/3 w-full justify-center md:justify-start">
             <img
               src={logo}
-              alt="Fata Kihlot logo"
+              alt="Jemari Creative logo"
               className="h-7 w-auto opacity-85 hover:opacity-100 transition-opacity duration-200 select-none"
             />
           </div>
